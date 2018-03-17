@@ -3,3 +3,4 @@
 # the concept is still under development
 
 print('Random print')
+print('I love Hamid!')
