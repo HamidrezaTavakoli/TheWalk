@@ -1,6 +1,7 @@
 # contributors ayla parsons, hamid tavakoli
 # This is a console text based game.
 # the concept is still under development
+import random
 
 
 def greetUser():
@@ -18,3 +19,22 @@ def tutorial():
         the Grim Reaper will come for your soul.
         You can beg him for another chance and he might give you one.""")
     print('Good Luck and enjoy playing')
+
+
+class GrimReaper:
+    def takeLife():
+        print('You failed.You are doomed to burn in hell for eternity.')
+
+    def letUserContinue():
+        print('You got lcky this time. We will meet again!')
+
+    def play():
+        randomNumber = random.int(1, 5)
+        print("""I have picked a number between 1 and 5. If you guess it,
+            I will give you another chance.""")
+        enteredNumber = int(input('What is you guess?'))
+        if randomNumber == enteredNumber:
+            # let the user continue
+            GrimReaper.letUserContinue()
+        else:
+            GrimReaper.takeLife()
