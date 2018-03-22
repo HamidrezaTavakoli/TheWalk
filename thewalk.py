@@ -26,13 +26,13 @@ class GrimReaper:
         print('You failed.You are doomed to burn in hell for eternity.')
 
     def letUserContinue():
-        print('You got lcky this time. We will meet again!')
+        print('You got lucky this time. We will meet again!')
 
     def play():
         randomNumber = random.int(1, 5)
         print("""I have picked a number between 1 and 5. If you guess it,
             I will give you another chance.""")
-        enteredNumber = int(input('What is you guess?'))
+        enteredNumber = int(input('What is your guess?'))
         if randomNumber == enteredNumber:
             # let the user continue
             GrimReaper.letUserContinue()
