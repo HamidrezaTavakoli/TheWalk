@@ -6,17 +6,17 @@ class Weapon():
 
 class Sword(Weapon):
     def __init__(self):
-        super.__init__(self, 'Sword', 30)
+        super.__init__(self, 'Sword', 50)
 
 
 class MagicWand(Weapon):
     def __init__(self):
-        super.__init__(self, 'MagicWand', 50)
+        super.__init__(self, 'MagicWand', 80)
 
 
 class ThorsHammer(Weapon):
     def __init__(self):
-        super.__init__(self, 'ThorsHammer', 100)
+        super.__init__(self, 'ThorsHammer', 120)
 
 
 class WeaponFactory():
