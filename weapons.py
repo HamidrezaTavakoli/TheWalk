@@ -14,9 +14,9 @@ class MagicWand(Weapon):
         super.__init__(self, 'MagicWand', 50)
 
 
-class WarHammer(Weapon):
+class ThorsHammer(Weapon):
     def __init__(self):
-        super.__init__(self, 'WarHammer', 100)
+        super.__init__(self, 'ThorsHammer', 100)
 
 
 class WeaponFactory():
