@@ -26,6 +26,6 @@ class WeaponFactory():
         elif code == 2:
             return MagicWand()
         elif code == 3:
-            return WarHammer()
+            return ThorsHammer()
         else:
             print('{} is not a valid weapon code'.format(code))
