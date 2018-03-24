@@ -37,4 +37,4 @@ class EnemyFactory():
         elif code == 3:
             return DarkShadow()
         else:
-            print('not a valid enemy code')
+            print('{} is not a valid enemy code.'.fomrat(code))
