@@ -9,7 +9,7 @@ class Player():
         if len(self.food) > 0:
             foodToEat = self.food.pop()
             if self.health < 100.0:
-                self.health = max((self.health + foodToEat.getValue()), 100)
+                self.health = max((self.health + foodToEat.power), 100)
             else:
                 self.health = 100.0
         else:
