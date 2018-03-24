@@ -22,13 +22,13 @@ def tutorial():
 
 
 class GrimReaper:
-    def takeLife():
+    def takeLife(self):
         print('You failed.You are doomed to burn in hell for eternity.')
 
-    def letUserContinue():
+    def letUserContinue(self):
         print('You got lucky this time. We will meet again!')
 
-    def play():
+    def play(self):
         randomNumber = random.int(1, 5)
         print("""I have picked a number between 1 and 5. If you guess it,
             I will give you another chance.""")
