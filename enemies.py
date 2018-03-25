@@ -17,7 +17,7 @@ class ThreeHeadedDog(Enemy):
 
 class DarkShadow(Enemy):
     def __init__(self):
-        super().__init__('ThreeHeadedDog', 80)
+        super().__init__('DarkShadow', 80)
 
 
 class EnemyFactory():
