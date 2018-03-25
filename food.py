@@ -12,3 +12,8 @@ class Fruit(Food):
 class Meat(Food):
     def __init__(self):
         super.__init__(self, 'meat', 60)
+
+
+class Water(Food):
+    def __init__(self):
+        super.__init__(self, 'water', 40)
