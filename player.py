@@ -8,10 +8,7 @@ class Player():
     def eat(self):
         if len(self.food) > 0:
             foodToEat = self.food.pop()
-            if self.health < 100.0:
-                self.health = max((self.health + foodToEat.power), 100)
-            else:
-                self.health = 100.0
+            self.health = min((self.health + foodToEat.power), 100)
         else:
             print('No food to eat at the moment')
 
@@ -29,6 +26,9 @@ class Player():
 
     def fight(self, enemy):
         enemyPower = enemy.strength
-        lastWeapon = self.weapons.pop()
-        self.health = (self.health + lastWeapon.power) - enemyPower
+        if len(self.weapons) > 0:
+            lastWeapon = self.weapons.pop()
+            self.health = min((self.health + lastWeapon.power) - enemyPower, 100)
+        else:
+            self.health = self.health - enemyPower
         return self.health

@@ -14,17 +14,17 @@ class Enemy():
 
 class Ghost(Enemy):
     def __init__(self):
-        super().__init__('Ghost', 90)
+        super().__init__('Ghost', 70)
 
 
 class ThreeHeadedDog(Enemy):
     def __init__(self):
-        super().__init__('ThreeHeadedDog', 190)
+        super().__init__('ThreeHeadedDog', 90)
 
 
 class DarkShadow(Enemy):
     def __init__(self):
-        super().__init__('ThreeHeadedDog', 150)
+        super().__init__('ThreeHeadedDog', 80)
 
 
 class EnemyFactory():

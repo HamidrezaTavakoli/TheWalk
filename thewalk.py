@@ -75,6 +75,7 @@ endingDictionary = {
                     }
 
 isFinished = False
+decisionsString = ""
 
 
 def greetUser():
@@ -98,20 +99,75 @@ def startGame():
     global isFinished
     gamePlayer = player.Player()
     gameDice = dice.Dice()
+    getRoomDecision()
     while(not isFinished):
         rollNumber = gameDice.roll()
         gameObject = getGameObject(number=rollNumber)
         if gameObject is None:
-            # it is a room
-            print('must present a room')
+            if len(decisionsString) == 5:
+                endGame()
+                break
+            elif len(decisionsString) < 5:
+                getRoomDecision()
+            else:
+                break
         elif isinstance(gameObject, enemies.Enemy):
-            print('must deal wiht an enemy')
+            print("""Destiny has put a {} in your path.
+                Good luck!""".format(gameObject.name))
+            remainingHealth = gamePlayer.fight(enemy=gameObject)
+            if remainingHealth <= 0:
+                print("""You got seriously damaged during your fight with the
+                    {}""".format(gameObject.name))
+                dealWithDeath()
+            else:
+                print("""After the fight your health is
+                    at {}""".format(remainingHealth))
+                # give them a chance to eat foodToEat
+                toEatOrNotToEat = input("""Would you like to
+                    eat some food to regenerate health?(Y,N)""").upper()
+                if toEatOrNotToEat == 'Y':
+                    gamePlayer.eat()
         elif isinstance(gameObject, weapons.Weapon):
-            print('must deal with a weapon')
+            weaponChoice = input("""There is a {} here, would you
+                like to pick it up?(Y,N)""".format(gameObject.name)).upper()
+            if weaponChoice == 'Y':
+                gamePlayer.pickUpWeapon(weapon=gameObject)
         elif isinstance(gameObject, food.Food):
-            print('must dead with the food')
+            foodChoice = input("""There is a {} here, would you
+                like to pick it up?(Y,N)""".format(gameObject.name)).upper()
+            if foodChoice == 'Y':
+                gamePlayer.pickUpFood(food=gameObject)
         else:
             break
+
+
+def getRoomDecision():
+    decision = input("""Destiny has put two paths before you. A room to your
+        left and a room to your right. Which one do you want to
+        take?(L,R)""").upper()
+    if decision == "R" or decision == "L":
+        global decisionsString
+        decisionsString += decision
+    else:
+        getRoomDecision()
+
+
+def endGame():
+    global decisionsString
+    ending = endingDictionary[decisionsString]
+    print(ending)
+
+
+def dealWithDeath():
+    grimReaper = GrimReaper()
+    toBegOrNotToBeg = input("""You are about to die. The Grim Reaper is here.\n
+        Would you like to beg for another chance?(Y,N)""").upper()
+    if toBegOrNotToBeg == 'Y':
+        grimReaper.play()
+    else:
+        global isFinished
+        isFinished = True
+        grimReaper.takeLife()
 
 
 def getGameObject(number):
@@ -125,7 +181,7 @@ def getGameObject(number):
         # we should retrun a food
         foodFactory = food.FoodFactory()
         return foodFactory.getFood(code=randomNum)
-    elif number == 3:
+    elif number == 3 or number == 5:
         # we should return a weapon
         weaponFactory = weapons.WeaponFactory()
         return weaponFactory.getWeapon(code=randomNum)
@@ -135,15 +191,18 @@ def getGameObject(number):
 
 
 class GrimReaper():
-    def takeLife(self):
-        print('You failed.You are doomed to burn in hell for eternity.')
+    def takeLife():
+        print("""Grim Reaper:You failed.You are doomed to
+            burn in hell for eternity.""")
+        global isFinished
+        isFinished = True
 
-    def letUserContinue(self):
-        print('You got lucky this time. We will meet again!')
+    def letUserContinue():
+        print('Grim Reaper:You got lucky this time. We will meet again!')
 
     def play(self):
-        randomNumber = random.int(1, 5)
-        print("""I have picked a number between 1 and 5. If you guess it,
+        randomNumber = random.randint(1, 2)
+        print("""I have picked a number between 1 and 2. If you guess it,
             I will give you another chance.""")
         enteredNumber = int(input('What is your guess?'))
         if randomNumber == enteredNumber:
