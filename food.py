@@ -6,22 +6,22 @@ class Food():
 
 class Fruit(Food):
     def __init__(self):
-        super.__init__(self, 'fruit', 30.0)
+        super().__init__('fruit', 30.0)
 
 
 class Meat(Food):
     def __init__(self):
-        super.__init__(self, 'meat', 60)
+        super().__init__('meat', 60)
 
 
 class Water(Food):
     def __init__(self):
-        super.__init__(self, 'water', 40)
+        super().__init__('water', 40)
 
 
 class FoodFactory():
 
-    def getFood(code):
+    def getFood(self, code):
         if code == 1:
             return Fruit()
         elif code == 2:

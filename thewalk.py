@@ -2,6 +2,11 @@
 # This is a console text based game.
 # the concept is still under development
 import random
+import player
+import dice
+import enemies
+import food
+import weapons
 
 endingDictionary = {
                     "LLLLL": """You are in Hell, and your roommate is
@@ -69,6 +74,8 @@ endingDictionary = {
                     is Fred Weasley"""
                     }
 
+isFinished = False
+
 
 def greetUser():
     print('Welcome\nHere you will walk the path of your destiny.')
@@ -87,7 +94,47 @@ def showTutorial():
     print('Good Luck and enjoy playing')
 
 
-class GrimReaper:
+def startGame():
+    global isFinished
+    gamePlayer = player.Player()
+    gameDice = dice.Dice()
+    while(not isFinished):
+        rollNumber = gameDice.roll()
+        gameObject = getGameObject(number=rollNumber)
+        if gameObject is None:
+            # it is a room
+            print('must present a room')
+        elif isinstance(gameObject, enemies.Enemy):
+            print('must deal wiht an enemy')
+        elif isinstance(gameObject, weapons.Weapon):
+            print('must deal with a weapon')
+        elif isinstance(gameObject, food.Food):
+            print('must dead with the food')
+        else:
+            break
+
+
+def getGameObject(number):
+    """ 1 <= number <= 6"""
+    randomNum = random.randint(1, 3)
+    if number == 1 or number == 6:
+        # we should get an enemy
+        enemyFactory = enemies.EnemyFactory()
+        return enemyFactory.getEnemy(code=randomNum)
+    elif number == 2:
+        # we should retrun a food
+        foodFactory = food.FoodFactory()
+        return foodFactory.getFood(code=randomNum)
+    elif number == 3:
+        # we should return a weapon
+        weaponFactory = weapons.WeaponFactory()
+        return weaponFactory.getWeapon(code=randomNum)
+    else:
+        # we should return a room
+        return None
+
+
+class GrimReaper():
     def takeLife(self):
         print('You failed.You are doomed to burn in hell for eternity.')
 
@@ -110,4 +157,8 @@ def main():
     """The game logic"""
     greetUser()
     showTutorial()
-    
+    startGame()
+
+
+if __name__ == '__main__':
+    main()

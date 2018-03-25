@@ -6,21 +6,21 @@ class Weapon():
 
 class Sword(Weapon):
     def __init__(self):
-        super.__init__(self, 'Sword', 50)
+        super().__init__('Sword', 50)
 
 
 class MagicWand(Weapon):
     def __init__(self):
-        super.__init__(self, 'MagicWand', 80)
+        super().__init__('MagicWand', 80)
 
 
 class ThorsHammer(Weapon):
     def __init__(self):
-        super.__init__(self, 'ThorsHammer', 120)
+        super().__init__('ThorsHammer', 120)
 
 
 class WeaponFactory():
-    def getWeapon(code):
+    def getWeapon(self, code):
         if code == 1:
             return Sword()
         elif code == 2:

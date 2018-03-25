@@ -12,26 +12,26 @@ class Enemy():
     #         player.die()
 
 
-class Gohst(Enemy):
+class Ghost(Enemy):
     def __init__(self):
-        super.__init__(self, 'Gohst', 90)
+        super().__init__('Ghost', 90)
 
 
 class ThreeHeadedDog(Enemy):
     def __init__(self):
-        super.__init__(self, 'ThreeHeadedDog', 190)
+        super().__init__('ThreeHeadedDog', 190)
 
 
 class DarkShadow(Enemy):
     def __init__(self):
-        super.__init__(self, 'ThreeHeadedDog', 150)
+        super().__init__('ThreeHeadedDog', 150)
 
 
 class EnemyFactory():
 
-    def getEnemy(code):
+    def getEnemy(self, code):
         if code == 1:
-            return Gohst()
+            return Ghost()
         elif code == 2:
             return ThreeHeadedDog()
         elif code == 3:

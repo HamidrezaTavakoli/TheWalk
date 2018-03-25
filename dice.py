@@ -2,5 +2,5 @@ import random
 
 
 class Dice():
-    def roll():
+    def roll(self):
         return random.randint(1, 6)
