@@ -3,4 +3,4 @@ import random
 
 class Dice():
     def roll():
-        return random.int(1, 6)
+        return random.randint(1, 6)
