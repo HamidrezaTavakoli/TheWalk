@@ -71,10 +71,10 @@ endingDictionary = {
 
 
 def greetUser():
-    print('welcome\nHere you will walk the path of your destiny.')
+    print('Welcome\nHere you will walk the path of your destiny.')
 
 
-def tutorial():
+def showTutorial():
     print('In this game you will roll the dice and move.')
     print('At the end of each move you are presented with a surprise.')
     print('Surprises are, Enemies, Weapons, Food and Rooms.')
@@ -108,3 +108,6 @@ class GrimReaper:
 
 def main():
     """The game logic"""
+    greetUser()
+    showTutorial()
+    
