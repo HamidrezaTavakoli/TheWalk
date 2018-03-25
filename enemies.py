@@ -4,13 +4,6 @@ class Enemy():
         self.name = name
         self.strength = strength
 
-    # def attack(self, player):
-    #     playerPower = player.getPower()
-    #     if playerPower >= self.strength:
-    #         player.takeDamage(self.strength)
-    #     else:
-    #         player.die()
-
 
 class Ghost(Enemy):
     def __init__(self):
