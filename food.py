@@ -6,7 +6,7 @@ class Food():
 
 class Fruit(Food):
     def __init__(self):
-        super().__init__('fruit', 45.0)
+        super().__init__('fruit', 45)
 
 
 class Meat(Food):
