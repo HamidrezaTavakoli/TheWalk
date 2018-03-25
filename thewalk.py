@@ -104,3 +104,7 @@ class GrimReaper:
             GrimReaper.letUserContinue()
         else:
             GrimReaper.takeLife()
+
+
+def main():
+    """The game logic"""
