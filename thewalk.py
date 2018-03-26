@@ -167,7 +167,7 @@ def dealWithDeath():
     else:
         global isFinished
         isFinished = True
-        grimReaper.takeLife()
+        GrimReaper.takeLife()
 
 
 def getGameObject(number):
